@@ -1,5 +1,6 @@
 # Integrating flask with HTML
 
+from dataclasses import replace
 import sklearn
 import glob
 import copy
@@ -14,12 +15,13 @@ from flask import Flask, flash, request, redirect, url_for, render_template,send
 from werkzeug.utils import secure_filename
 
 # Libraries required for Models
-from MODELS import *
+from MODELS_with_relative_address import *
 import numpy as np
 import pandas as pd
 from PIL import Image
 from osgeo import gdal, gdalconst
 from osgeo.gdalconst import * 
+import stat
 
 
 filename_store=""
@@ -52,7 +54,15 @@ def allowed_file(filename):
 def YOLO_prediction(filename):
     
     # cleaning detect folder, removing all directories/files/subdirectories
-    dir = r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\runs\detect"
+    # dir = r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\runs\detect"
+    # dir = r"\flasknew-Copy\yolov5\runs\detect"
+    dir = os.getcwd()+"\yolov5\\runs\detect"
+    dir.replace('\\','/')
+    
+    # def removeReadOnly(func,path,excinfo):
+    #     os.chmod(path,stat.S_IWRITE)
+    #     func(path)
+  
     for files in os.listdir(dir):
         path = os.path.join(dir, files)
         try:
@@ -61,24 +71,33 @@ def YOLO_prediction(filename):
             os.remove(path)
     
     # uploaded HSI converted to JPG
-    hsi_to_image(r"C:\Users\admin\Desktop\flasknew-Copy\static\uploads"+f"\\{filename}")
+    # hsi_to_image(r"C:\Users\admin\Desktop\flasknew-Copy\static\uploads"+f"\\{filename}")
+    # hsi_to_image(r"C:\Users\admin\Desktop\flasknew-Copy\static\uploads"+f"\\{filename}")
+    hsi_to_image(os.getcwd()+"/static/uploads"+f"/{filename}")
     
     # now pass the jpg in test_image_path
     jpgFileName=filename_store+".jpg"
         
-    detect_py_path=r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\detect.py"
-    test_image_path=r"C:\Users\admin\Desktop\flasknew-Copy\static\uploads"+f"\\{jpgFileName}"
-    best_pt_path=r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\runs\train\exp\weights\best.pt"
+    # detect_py_path=r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\detect.py"
+    # test_image_path=r"C:\Users\admin\Desktop\flasknew-Copy\static\uploads"+f"\\{jpgFileName}"
+    # best_pt_path=r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\runs\train\exp\weights\best.pt"
+    
+    detect_py_path=os.getcwd()+"/yolov5/detect.py"
+    test_image_path=os.getcwd()+r"\static\uploads"+f"\\{jpgFileName}"
+    best_pt_path=os.getcwd()+r"\yolov5\runs\train\exp\weights\best.pt"
     
     print("*******__________********** : : test_image_path = ",test_image_path)
     
     
     cmd="python "+detect_py_path+" --source "+test_image_path+" --weights "+best_pt_path
+    # file=open(r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",'w')
     file=open(r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",'w')
     file.write(cmd)
     file.close()
-    subprocess.run([r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",""])
-    file=open(r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",'w')
+    # subprocess.run([r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",""])
+    subprocess.run([os.getcwd()+r"\run.bat",""])
+    # file=open(r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",'w')
+    file=open(os.getcwd()+r"\run.bat",'w')
     file.truncate()
     file.close()
     return
@@ -103,7 +122,7 @@ def upload_image():
         
         # SAVE selected file by user
         file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-        print('upload_image filename: ' + filename)
+        # print('upload_image filename: ' + filename)
         flash(f'Image {file.filename} successfully uploaded')
         
         # Save name of FILE in use in VARIABLE
@@ -111,7 +130,8 @@ def upload_image():
         filename_store=nameSplit[0]
         
         # writing to file, in order to use in MODELS.py
-        fi=open(r"C:\Users\admin\Desktop\flasknew-Copy\target_file_name_store.txt",'w')
+        # fi=open(r"C:\Users\admin\Desktop\flasknew-Copy\target_file_name_store.txt",'w')
+        fi=open(os.getcwd()+r"\target_file_name_store.txt",'w')
         fi.write(filename_store)
         fi.close()
         
@@ -131,7 +151,8 @@ def display_image(filename):
 @app.route("/getimage")
 def get_img():
     
-    f=open(r"C:\Users\admin\Desktop\flasknew-Copy\target_file_name_store.txt",'r')
+    # f=open(r"C:\Users\admin\Desktop\flasknew-Copy\target_file_name_store.txt",'r')
+    f=open(os.getcwd()+r"\target_file_name_store.txt",'r')
     filename_store=f.read()
     f.close()
     
@@ -139,11 +160,13 @@ def get_img():
     
     print("fileSTORE IS : : : ",filename_store)
     img_filename=filename_store+".jpg"
-    modelResultImg=r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\runs\train\exp"+"\\{img_filename}"
+    # modelResultImg=r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\runs\train\exp"+"\\{img_filename}"
+    modelResultImg=os.getcwd()+r"\yolov5\runs\train\exp"+"\\{img_filename}"
     
     # Copy the Image to static folder for easy display in Modal
     src_dir=modelResultImg
-    dst_dir = r"C:\Users\admin\Desktop\flasknew-Copy\static"
+    # dst_dir = r"C:\Users\admin\Desktop\flasknew-Copy\static"
+    dst_dir = os.getcwd()+"/static"
     for jpgfile in glob.iglob(os.path.join(src_dir, img_filename)):
         shutil.copy(jpgfile, dst_dir)
     

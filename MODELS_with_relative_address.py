@@ -54,7 +54,7 @@ def ENVI_raster_binary_to_image(file_name):
     Lack of an ENVI .hdr file will cause this to crash.
     '''
     
-    print("(((((((((((((((((((((((((((((((((((((( [envi function file_name received] = ",file_name)
+    print(" envi function file_name received = ",file_name)
     
     # file_name=file_name.replace("\\","/")
     inDs = gdal.Open(file_name, GA_ReadOnly)
@@ -111,7 +111,7 @@ def ENVI_raster_binary_to_image(file_name):
 @ignore_warnings(category=UserWarning)
 def Regression(values168):
     # df = read_csv(r"C:\Users\admin\Desktop\flasknew-Copy\region.csv", delim_whitespace=False, header=None)
-    df = read_csv(r"C:\Users\admin\Desktop\flasknew-Copy\region.csv", delim_whitespace=False, header=None)
+    df = read_csv(os.getcwd()+"/region.csv", delim_whitespace=False, header=None)
     feature_names = ['Band_1', 'Band_2', 'Band_3', 'Band_4', 'Band_5', 'Band_6', 'Band_7', 'Band_8  ', 'Band_9', 'Band_10', 'Band_11', 'Band_12', 'Band_13', 'Band_14', 'Band_15', 'Band_16', 'Band_17', 'Band_18', 'Band_19', 'Band_20', 'Band_21', 'Band_22', 'Band_23', 'Band_24', 'Band_25', 'Band_26', 'Band_27', 'Band_28', 'Band_29', 'Band_30', 'Band_31', 'Band_32', 'Band_33', 'Band_34', 'Band_35', 'Band_36', 'Band_37', 'Band_38', 'Band_39', 'Band_40', 'Band_41', 'Band_42', 'Band_43', 'Band_44', 'Band_45', 'Band_46', 'Band_47', 'Band_48', 'Band_49', 'Band_50', 'Band_51', 'Band_52', 'Band_53', 'Band_54', 'Band_55', 'Band_56', 'Band_57', 'Band_58', 'Band_59', 'Band_60', 'Band_61', 'Band_62', 'Band_63', 'Band_64', 'Band_65', 'Band_66', 'Band_67', 'Band_68', 'Band_69', 'Band_70', 'Band_71', 'Band_72', 'Band_73', 'Band_74', 'Band_75', 'Band_76', 'Band_77', 'Band_78', 'Band_79', 'Band_80', 'Band_81', 'Band_82', 'Band_83', 'Band_84', 'Band_85', 'Band_86', 'Band_87', 'Band_88', 'Band_89', 'Band_90', 'Band_91', 'Band_92', 'Band_93', 'Band_94', 'Band_95', 'Band_96', 'Band_97', 'Band_98', 'Band_99', 'Band_100', 'Band_101', 'Band_102', 'Band_103', 'Band_104', 'Band_105', 'Band_106', 'Band_107', 'Band_108', 'Band_109', 'Band_110', 'Band_111', 'Band_112', 'Band_113', 'Band_114', 'Band_115', 'Band_116', 'Band_117', 'Band_118', 'Band_119', 'Band_120', 'Band_121', 'Band_122', 'Band_123', 'Band_124', 'Band_125', 'Band_126', 'Band_127', 'Band_128', 'Band_129', 'Band_130', 'Band_131', 'Band_132', 'Band_133', 'Band_134', 'Band_135', 'Band_136', 'Band_137', 'Band_138', 'Band_139', 'Band_140', 'Band_141', 'Band_142', 'Band_143', 'Band_144', 'Band_145', 'Band_146', 'Band_147', 'Band_148', 'Band_149', 'Band_150', 'Band_151', 'Band_152', 'Band_153', 'Band_154', 'Band_155', 'Band_156', 'Band_157', 'Band_158', 'Band_159', 'Band_160', 'Band_161', 'Band_162', 'Band_163', 'Band_164', 'Band_165', 'Band_166', 'Band_167', 'Band_168','Sugar']
 
     
@@ -152,7 +152,7 @@ def classification(sugar):
  
     # store the feature matrix (X) and response vector (y)
     # df = read_csv(r"C:\Users\admin\Desktop\flasknew-Copy\final.csv", delim_whitespace=False, header=None)
-    df = read_csv(r"C:\Users\admin\Desktop\flasknew-Copy\final.csv", delim_whitespace=False, header=None)
+    df = read_csv(os.getcwd()+"/final.csv", delim_whitespace=False, header=None)
 
     feature_names = ['Sugar','Classification']
 
@@ -178,17 +178,17 @@ def classification(sugar):
 def hsi_to_image(hsipath):
     # get the jpg image file name in use
     # file=open(r"C:\Users\admin\Desktop\flasknew-Copy\target_file_name_store.txt",'r')
-    file=open(r"C:\Users\admin\Desktop\flasknew-Copy\target_file_name_store.txt",'r')
+    file=open(os.getcwd()+"/target_file_name_store.txt",'r')
     target=file.read()
     file.close()
     img_name=target+'.jpg'
     
-    print("++++++++++______ hsi to image = ",img_name)
+    # print("++++++++++______ hsi to image = ",img_name)
     
     # convert hsi to jpg
     converted_image=ENVI_raster_binary_to_image(hsipath)
     # converted_image.save(r"C:\Users\admin\Desktop\flasknew-Copy\static\uploads"+f"\\{img_name}",'JPEG')
-    converted_image.save(r"C:\Users\admin\Desktop\flasknew-Copy\static\uploads"+f"\\{img_name}",'JPEG')
+    converted_image.save(os.getcwd()+"/static/uploads"+f"/{img_name}",'JPEG')
         
     return
 
@@ -210,12 +210,12 @@ def complete():
     # change 1, argument in below function required
     
     # f=open(r"C:\Users\admin\Desktop\flasknew-Copy\target_file_name_store.txt",'r')
-    f=open(r"C:\Users\admin\Desktop\flasknew-Copy\target_file_name_store.txt",'r')
+    f=open(os.getcwd()+"/target_file_name_store.txt",'r')
     target=f.read()
     f.close()
     
     # pth=r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\runs\detect\exp\labels"+f"\\{target}.txt"
-    pth=r"C:\Users\admin\Desktop\flasknew-Copy\yolov5\runs\detect\exp\labels"+f"\\{target}.txt"
+    pth=os.getcwd()+"/yolov5/runs/detect/exp/labels"+f"/{target}.txt"
     f=open(pth)
     prediction=[]
     
