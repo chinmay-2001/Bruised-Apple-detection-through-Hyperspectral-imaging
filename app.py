@@ -91,7 +91,7 @@ def YOLO_prediction(filename):
     
     cmd="python "+detect_py_path+" --source "+test_image_path+" --weights "+best_pt_path
     # file=open(r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",'w')
-    file=open(r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",'w')
+    file=open(os.getcwd()+r"C:\run.bat",'w')
     file.write(cmd)
     file.close()
     # subprocess.run([r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",""])
