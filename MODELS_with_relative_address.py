@@ -6,8 +6,8 @@ import matplotlib.pyplot as plt
 from PIL import Image
 import pathlib
 import pandas as pd
-from osgeo import gdal
-from osgeo.gdalconst import * 
+# from osgeo import gdal
+# from osgeo.gdalconst import * 
 from pandas import read_csv
 from app import *
 import sklearn
