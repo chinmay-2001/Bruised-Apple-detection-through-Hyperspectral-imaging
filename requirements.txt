@@ -9,7 +9,7 @@ gunicorn
 itsdangerous
 numpy
 requests
-wsgiref
+# wsgiref
 matplotlib
 sklearn
 torch==1.12.0
