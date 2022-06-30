@@ -9,7 +9,7 @@ import os,shutil
 # import sys
 import subprocess
 # import torch
-from IPython.display import Image
+# from IPython.display import Image
 # import urllib.request
 from flask import Flask, flash, request, redirect, url_for, render_template,send_from_directory
 from werkzeug.utils import secure_filename
