@@ -1,27 +1,27 @@
 # Integrating flask with HTML
 
-from dataclasses import replace
-import sklearn
+# from dataclasses import replace
+# import sklearn
 import glob
-import copy
+# import copy
 import shutil
 import os,shutil
-import sys
+# import sys
 import subprocess
-import torch
+# import torch
 from IPython.display import Image
-import urllib.request
+# import urllib.request
 from flask import Flask, flash, request, redirect, url_for, render_template,send_from_directory
 from werkzeug.utils import secure_filename
 
 # Libraries required for Models
 from MODELS_with_relative_address import *
-import numpy as np
-import pandas as pd
-from PIL import Image
+# import numpy as np
+# import pandas as pd
+# from PIL import Image
 from osgeo import gdal, gdalconst
 from osgeo.gdalconst import * 
-import stat
+# import stat
 
 
 filename_store=""
