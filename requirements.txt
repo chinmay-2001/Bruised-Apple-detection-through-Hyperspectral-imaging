@@ -17,10 +17,6 @@ sklearn
 pandas
 Pillow==9.1.1
 numpy
-GDAL-3.4.3-cp310-cp310-win_amd64.whl
-<<<<<<< HEAD
 gdal
 osgeo
-=======
-GDAL-3.4.3-cp310-cp310-win_amd64.whl
->>>>>>> 6946fc6cbb65c7bab699f973c98f7da0dca1652f
+
