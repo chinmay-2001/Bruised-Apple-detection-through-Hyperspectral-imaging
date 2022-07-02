@@ -19,8 +19,8 @@ from MODELS_with_relative_address import *
 # import numpy as np
 # import pandas as pd
 # from PIL import Image
-# from osgeo import gdal, gdalconst
-# from osgeo.gdalconst import * 
+from osgeo import gdal, gdalconst
+from osgeo.gdalconst import * 
 # import stat
 
 
@@ -91,7 +91,7 @@ def YOLO_prediction(filename):
     
     cmd="python "+detect_py_path+" --source "+test_image_path+" --weights "+best_pt_path
     # file=open(r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",'w')
-    file=open(os.getcwd()+r"C:\run.bat",'w')
+    file=open(os.getcwd()+r"\run.bat",'w')
     file.write(cmd)
     file.close()
     # subprocess.run([r"C:\Users\admin\Desktop\flasknew-Copy\run.bat",""])
@@ -105,7 +105,7 @@ def YOLO_prediction(filename):
  
 @app.route('/')
 def upload_form():
-	return render_template('home.html')
+	return render_template('home_copy.html')
 
 @app.route('/', methods=['POST'])
 def upload_image():
@@ -139,7 +139,7 @@ def upload_image():
         YOLO_prediction(filename_store+".bip")
         
         # Render html page
-        return render_template('home.html', filename=filename)
+        return render_template('home_copy.html', filename=filename)
     else:
         flash('Only .bip format is supported!')
         return redirect(request.url)
