@@ -8,6 +8,7 @@ import pathlib
 import pandas as pd
 # from osgeo import gdal
 # from osgeo.gdalconst import * 
+import gdal
 from pandas import read_csv
 from app import *
 import sklearn

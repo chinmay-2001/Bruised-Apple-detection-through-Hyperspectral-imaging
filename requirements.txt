@@ -17,6 +17,6 @@ sklearn
 pandas
 Pillow==9.1.1
 numpy
-gdal
-osgeo
+# gdal
+# osgeo
 
