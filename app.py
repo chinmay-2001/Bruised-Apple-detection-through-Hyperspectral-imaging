@@ -19,8 +19,8 @@ from MODELS_with_relative_address import *
 # import numpy as np
 # import pandas as pd
 # from PIL import Image
-from osgeo import gdal, gdalconst
-from osgeo.gdalconst import * 
+# from osgeo import gdal, gdalconst
+# from osgeo.gdalconst import * 
 # import stat
 
 
