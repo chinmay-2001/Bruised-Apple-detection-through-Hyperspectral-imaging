@@ -4,7 +4,7 @@ channels:
   - defaults
 dependencies:
    
-  - gdal=3.4.2=py37hd4e592b_4
+  - gdal=3.4.2
   
   - pip:
     - absl-py==1.0.0
