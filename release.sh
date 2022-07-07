@@ -1,2 +1,1 @@
-
-conda install -c conda-forge gdal
+bash Anaconda-latest-Linux-x86_64.sh

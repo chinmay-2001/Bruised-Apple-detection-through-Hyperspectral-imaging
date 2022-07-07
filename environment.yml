@@ -3,9 +3,9 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-   
-  - gdal=3.4.2
   - python=3.7.13
+  - gdal=3.4.2
+  
   - pip:
     - absl-py==1.0.0
     - cachetools==5.0.0
@@ -48,5 +48,5 @@ dependencies:
     - tqdm==4.64.0
     - urllib3==1.26.9
     - werkzeug==2.1.2
-# prefix: C:\Users\admin\anaconda3\envs\pygdal
+
 
