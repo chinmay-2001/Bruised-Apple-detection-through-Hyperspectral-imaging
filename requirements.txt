@@ -23,14 +23,14 @@ matplotlib>=3.2.2
 opencv-python>=4.1.1
 Pillow>=7.1.2
 PyYAML>=5.3.1
-requests>=2.23.0
-scipy>=1.4.1  # Google Colab version
+# requests>=2.23.0
+# scipy>=1.4.1  # Google Colab version
 
-tqdm>=4.41.0
-protobuf<=3.20.1
-ipython  # interactive notebook
-psutil  # system utilization
-thop  # FLOPs computation
+# tqdm>=4.41.0
+# protobuf<=3.20.1
+# ipython  # interactive notebook
+# psutil  # system utilization
+# thop  # FLOPs computation
 # gdal
 # osgeo
 
