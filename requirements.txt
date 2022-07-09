@@ -23,7 +23,7 @@ matplotlib
 opencv-python
 Pillow
 PyYAML
-GDAL-3.4.3-cp39-cp39-win_amd64.whl
+GDAL-   3.4.3-cp39-cp39-win_amd64.whl
 # requests>=2.23.0
 # scipy>=1.4.1  # Google Colab version
 
